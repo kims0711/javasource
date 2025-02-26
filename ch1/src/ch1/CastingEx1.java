@@ -16,7 +16,8 @@ public class CastingEx1 {
 
         // int + double => double
         int result = intValue + (int)dblValue;
-        System.out.printf("result = %d\n",result);
+        System.out.printf("result = %d\n",result); //printf는 출력할 변수형 입력 후 ,
+        System.out.println("result =  " + result); //println,은 +
 
         float f1 = 9.1234567f;
         double d1 = 9.1234567;
