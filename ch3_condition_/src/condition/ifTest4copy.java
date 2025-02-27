@@ -15,6 +15,7 @@ public class ifTest4copy {
         Scanner scanner = new Scanner(System.in);
         System.out.println("점수입력: ");
         int score = scanner.nextInt();
+
             
 
         if(score>=90){

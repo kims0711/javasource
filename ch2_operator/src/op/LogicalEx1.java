@@ -49,6 +49,9 @@ public class LogicalEx1{
       
       System.out.printf("ch=%c, 'q' ==ch && ch=='Q' = &b\n",ch, !(ch=='q' || ch =='Q'));
 
-      
+      //&nd가 뭔지 궁금해서
+      // System.out.printf("테스트%d\n",123);
+      // System.out.printf("테스트%5d\n",123);
+      // System.out.printf("테스트%10d\n",123);
     }
 }
