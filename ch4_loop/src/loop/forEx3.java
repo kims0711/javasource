@@ -25,22 +25,21 @@ public class forEx3 {
 
         // 1에서 10까지의 합 반복문으로 구하기
 
-        int sum = 0; //sum을 for문 밖에서 출력하고 싶으니까 여기에서 선언하는 것
+        int sum = 0; // sum을 for문 밖에서 출력하고 싶으니까 여기에서 선언하는 것
         for (int i = 0; i < 11; i++) {
-            //sum = sum + i;
-            sum += i; //복합대입연산자(위와 같음)
+            // sum = sum + i;
+            sum += i; // 복합대입연산자(위와 같음)
         }
         System.out.println(sum);
-
 
         // 1~100까지의 수 중에서 3의 배수만 더하기
 
         int sum3 = 0;
         for (int i = 0; i < 101; i++) {
-            if(i % 3 == 0){
-                System.out.print(i+"  ");
+            if (i % 3 == 0) {
+                System.out.print(i + "  ");
                 sum3 += i;
-            } 
+            }
         }
         System.out.println("sum3= " + sum3);
     }
