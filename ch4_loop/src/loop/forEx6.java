@@ -21,7 +21,7 @@ public class forEx6 {
       result *= i;
     }
     System.out.printf("%d 팩토리얼의 값은 = %d\n", num, result);
-
+    scanner.close();
   }
 
 }

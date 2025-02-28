@@ -26,14 +26,14 @@ public class forEx2 {
             System.out.print(i + "   ");
         }
 
-        System.out.printf("\n"); //줄바꿈
+        System.out.printf("\n"); // 줄바꿈
 
         // 10~1 역순으로 찍기
         for (int i = 10; i > 0; i--) {
             System.out.print(i + "   ");
         }
 
-        System.out.printf("\n"); //줄바꿈
+        System.out.printf("\n"); // 줄바꿈
 
         // 짝수만 출력 1~10
         for (int i = 0; i < 11; i++) {
@@ -41,12 +41,26 @@ public class forEx2 {
                 System.out.print(i + "   ");
             }
         }
-        System.out.println(); //줄바꿈
+        System.out.println(); // 줄바꿈
 
         // 짝수만 출력 1~10 다른 방식
-        for (int i = 0; i < 11; i+=2) { // i+= : 복합대입연산자 (i = i+2)
+        for (int i = 0; i < 11; i += 2) { // i+= : 복합대입연산자 (i = i+2)
             System.out.print(i + "   ");
         }
+
+        int j = 0;
+        for (; j < args.length; j++) {
+
+        } // for문도 while문과 같이 변수를 밖에서 선언해도 되기는 함. 다만 for조건문 안에 ;은 남겨야 함
+
+        j = 0;
+        for (int k = 0, q = 1; j < args.length; j++) { // 이처럼 여러개도 선언 가능
+        }
+
+        for (;;) {
+            // 얘도 가능은 하나 무한루프이기 때문에 멈추는 코드는 필요
+        }
+
     }
 
 }
