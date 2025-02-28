@@ -32,16 +32,21 @@ public class breakEx3 {
                     break;
                 case 2: // 출금액 입력, 잔액(기존 잔액 - 출금액)
                     System.out.println("출금액을 입력하시오");
-                    if (account > inout) {
-                        inout = sc.nextInt();
+                    inout = sc.nextInt(); // 위에서 선언한 변수 써도 되고 여기서 int 로 다시 선언해주고 써도 되고
+                                          // 위에 account += sc.nextInt(); 로 간략화 해준 것 때문에 inout 변수가 필요가 없어졌었음 (inout 써보려고
+                                          // 지금 다시 만든거)
+                    if (account >= inout) {
                         // account -= inout;
-                        account -= sc.nextInt();
+                        account -= inout;
+
+                        // *
 
                     } else {
                         System.out.println("잔액이 부족합니다");
+                        continue; // 밑에 문장 출력되지 않게
                     }
-                    System.out.printf("출금 후 현재 잔액은 %d 원 입니다\n", account);
-
+                    System.out.printf("출금 후 현재 잔액은 %d 원 입니다\n", account); // 위에 continue 써보려고 여기에 두었지만 if 블럭 안의 *위치에 두면
+                                                                          // continue도 필요 없음
                     break;
                 case 3: // 잔액 조회 : 출력만
                     System.out.printf("현재 잔액은 %d 원 입니다\n", account);
