@@ -9,11 +9,11 @@ public class breakEx3 {
         Scanner sc = new Scanner(System.in);
 
         int account = 0; // 잔액 변수가 while문 안에 있으면 반복 될 때마다 초기화 되니까 당연히 여기에 있어야
-        // int inout = 0;
+        int inout = 0;
 
         while (run) { // run이 true 이기 때문에 현재 무한루프이고 4번을 고를 시에 false가 되어 종료되는 것
             System.out.println("==================================");
-            System.out.println("1.예금 | 2.적금 | 3.잔고 | 4.종료");
+            System.out.println("1.예금 | 2.출금 | 3.잔고 | 4.종료");
             System.out.println("==================================");
 
             System.out.println("메뉴 번호 입력하세요.");
@@ -31,17 +31,15 @@ public class breakEx3 {
 
                     break;
                 case 2: // 출금액 입력, 잔액(기존 잔액 - 출금액)
-
-                    account -= sc.nextInt();
-                    if (account > sc.nextInt()) {
-                        System.out.println("출금액을 입력하시오");
-                        // inout = sc.nextInt();
+                    System.out.println("출금액을 입력하시오");
+                    if (account > inout) {
+                        inout = sc.nextInt();
                         // account -= inout;
                         account -= sc.nextInt();
+
                     } else {
                         System.out.println("잔액이 부족합니다");
                     }
-
                     System.out.printf("출금 후 현재 잔액은 %d 원 입니다\n", account);
 
                     break;
