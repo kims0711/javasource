@@ -28,6 +28,8 @@ public class arrayEx4 {
         }
         System.out.printf("총합 : %d \n", sum);
         System.out.printf("평균 : %.2f\n", (double) sum / arr.length);
+
+        sc.close();
     }
 
 }
