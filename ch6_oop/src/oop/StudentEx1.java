@@ -12,5 +12,9 @@ public class StudentEx1 {
         System.out.println(student2);
         System.out.println(student3);
 
+        // 전화번호 변경
+        student3.changePhoneNum("010-9757-6779");
+        System.out.println(student3);
+
     }
 }
