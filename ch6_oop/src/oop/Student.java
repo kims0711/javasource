@@ -7,17 +7,41 @@ public class Student {
     // 이메일(kim@gmail.com)
 
     // < 멤버 변수 >
-    String StuId;
-    String Name;
-    int Grade;
-    int ClassNum;
-    String PhoneNum;
-    String Email;
+    private String StuId;
+    private String Name;
+    private int Grade;
+    private int ClassNum;
+    private String PhoneNum;
+    private String Email;
 
     // 생성자 : 개발자가 명시하지 않으면 컴파일러가 자동으로 default 생성자 만들어줌.
     // 클래스명(){}
     // 생성자 여러개 만들 수 있지만 소괄호 안의 개수가 달라야 함 0~n
     public Student() { // 소괄호 안에 아무 것도 없는 생성자 : default 생성자
+    }
+
+    public String getStuId() {
+        return StuId;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public int getGrade() {
+        return Grade;
+    }
+
+    public int getClassNum() {
+        return ClassNum;
+    }
+
+    public String getPhoneNum() {
+        return PhoneNum;
+    }
+
+    public String getEmail() {
+        return Email;
     }
 
     // 생성자 목적 : 멤버 변수 초기화
@@ -53,15 +77,15 @@ public class Student {
     }
 
     void changeEmail(String email) {
-        // this.email = email;
+        this.Email = email;
     }
 
-    void changeGrade(int classNum) {
-
+    void changeGrade(int grade) {
+        this.Grade = grade;
     }
 
-    void changeClassNum() {
-
+    void changeClassNum(int classNum) {
+        this.ClassNum = classNum;
     }
 
     @Override

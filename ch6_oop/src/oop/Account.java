@@ -8,8 +8,20 @@ public class Account {
     // 생성자(default, 멤버변수 3개 초기화) 두개 만들기
     // toString
 
-    String ano, owner;
-    long balance;
+    private String ano, owner;
+    private long balance;
+
+    public String getAno() {
+        return ano;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
 
     public Account() {
     }
@@ -27,6 +39,11 @@ public class Account {
 
     // 출금하기
     void withdraw(long amount) {
+        // 인출액이 잔액보다 작으면 go 아니면 불가능
+        if (amount > balance) {
+            System.out.println("잔액이 부족합니다");
+            return;
+        }
         this.balance -= amount;
     }
 

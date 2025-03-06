@@ -9,7 +9,11 @@ public class PrimitiveParamEx {
         d.x = 100; // 초기화
         System.out.println("main() : x= " + d.x);
         // change(d.x); // change 라는 메서드 호출
-        change2(d);
+
+        // 값 복사
+        change(d.x); // 얘는 값만 넘긴 것
+        // 주소 복사
+        change2(d); // d는 주소, 주소를 넘긴 것
         System.out.println("Atfer change() ");
         System.out.println(d.x);
 
@@ -18,12 +22,12 @@ public class PrimitiveParamEx {
         // }
     }
 
-    static void change(int x) {
+    static void change(int x) { // 값만 복사해서 가져옴
         x = 10000;
         System.out.println("change() : x = " + x);
     }
 
-    static void change2(Data d) {
+    static void change2(Data d) { // 주소를 복제하여 변수 자체를 지정해서 가져옴
         d.x = 10000;
         System.out.println("change() : x = " + d.x);
     }
