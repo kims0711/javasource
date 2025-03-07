@@ -18,7 +18,7 @@ public class SquareEx {
         // 객체배열
         // 객체(클래스)명 배열명[] = new 객체(클래스)명[n];
 
-        Square squareArr[] = new Square[5]; // Square 밖에 못 담아! 그래서 23번째 줄 처럼 담게 되는 것
+        Square squareArr[] = new Square[5]; // Square 밖에 못 담아!
         System.out.println(Arrays.toString(squareArr)); // [null, null, null, null, null] : 객체배열은 초기값이 null이 됨
         // 원하는 값으로 초기화
         squareArr[0] = new Square(15);
