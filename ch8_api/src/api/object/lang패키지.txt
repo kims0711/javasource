@@ -1,4 +1,5 @@
 java.lang 패키지
+
 1. Object 
 > 모든 클래스의 최고 조상 
 > equals() : 부모는 주소 값 비교인데 재정의를 통해 값 비교로 변경 가능(object 오버라이딩하여)
@@ -42,5 +43,37 @@ java.lang 패키지
        > ex. String str4 = String.valueOf(i);
        > str4 = i + "";  근데 이렇게도 문자열로 바꿀 수 있으니까 방법은 선택하면 됨
        >> 기본타입 + 문자열타입 = 문자열타입
+
+
+3. StringBuilder, StringBuffer
+> 문자열을 다루기 위한 클래스의
+> 변경 가능한 클래스 (<->String 클래스와 대비)
+> StringBuffer : 멀티스레드 지원
+> StringBuilder : 싱글스레드 지원, StringBuffer보다 빠름
+
+
+4. Math
+> 기본적인 수학 계산에 유용한 메서드로 구성됨
+> 모든 메소드가 static이고, 상수만 존재
+
+
+5. 래퍼(wrapper) 클래스
+> 기본형을 객체로 다루기 위한 클래스
+> int ==> Integer
+> long ==> Long
+> float ==> Float
+> char ==> Character
+> boolean ==> Boolean
+
+
+
+
+
+
+
+
+
+
+
 
 
