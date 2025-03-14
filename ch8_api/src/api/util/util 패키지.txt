@@ -13,14 +13,53 @@
 > 데이터를 담는 다양한 방법에 대한 클래스(인터페이스) 모음
 > java.util.collection
     1. List: 배열과 같은 개념
+        >> List<E> or T, K, V ... : 객체타입이 필요함(이라는뜻)
         >> 순서대로 담기, 인덱스 접근 가능
         >> 배열의 단점(개발자의 불편함) 해결
         >> 구현 클래스 : ArrayList, LinkedList, Stack, Queue.....
             >>> ArrayList: 배열과 같음 (우리가 직접 하지 않을 뿐 배열과 같은 작동방식)
             >>> LinkedList: 리스트를 링크로 연결  
-    2. Set: 
+            >>> 순차적인 추가/삭제: ArrayList > LinkedList (단, ArrayList의 저장공간을 충분히 할당해야함)
+            >>> 중간데이터의 추가/삭제: LinkedList > ArrayList
+        >> Stack(스택): LIFO 구조(Last In First Out) -> 수식계산, undo/redo, 브라우저 뒤/앞으로 가기 등에 사용
+        >> Queue(큐): FIFO 구조(First In First Out) -> 버퍼, 최근 사용 문서 등등
 
+    2. Set: 중복된 요소를 저장하지 않음 
+        >> HashSet
+            >>> equals() + hashCode() : true 이면 중복된 요소로 처리
+            >>> 해싱 적용
+            >>> 순서를 유지하지는 않음 (순서 무작위) 만약 순서 유지 원한다? -> LinkedHashSet
+        >> LinkedHashSet: 순서유지 + 중복된 요소 저장 x
+        >> TreeSet: 얘도 중복된 요소는 허용하지 않고 정렬도 함 (오름차순) (자료구조에서 배운 트리임)
 
-3) 
-List<E> or T, K, V ... : 객체타입이 필요함(이라는뜻)
+> java.util.collection 의 자식 아님
+    3. Map
+        >> collection 자식 아님
+        >> K(key), V(value) 구조 사용
+            >>> K만 중복 요소 검사함 (V는 중복 상관없다)
+        >> HashMap
+        >> TreeMap
+    
+    4. Iterator
+        >> 컬렉션에 저장된 요소들을 읽어오는 방법에 대한 표준화 인터페이스이다.
+        >> List, Set 데이터를 읽어오는 방법과 Map 데이터를 읽어오는 방법이 서로 다름 -> 따라서 Iterator로 해결(표준화)
+        >> hasNext(), next(), remove() 세 가지 알고있기 
 
+    5. Arrays
+        >> 배열과 관련된 유용한 메소드 제공
+        >> Arrays.toString(args); : 배열 값 출력
+        >> Arrays.asList("") : 배열을 리스트로 변환
+        >> 정렬 제공 
+            >>> Arrays.sort(기본타입배열) - 자동으로 오름차순 정렬
+            >>> Arrays.sort(객체타입배열, 정렬조건) - 내림차순 등등 조건을 지정하여 정렬
+                (1) Comparator.reverseOrder(): 내림차순 ex. Arrays.sort(cahracters, Comparator.reverseOrder());
+                (2) Comparator.naturalOrder(): 오름차순
+        >> 검색 제공
+            >>> 순차검색: 배열 첫 번째 요소부터 하나씩 검색하는 방식
+            >>> 이진검색: 정렬된 데이터에서 범위를 반복적으로 반으로 줄여가면서 검색 (up & down)
+        >> 배열 비교 : Arrays.equals(배열1,배열2) -> true/false로 반환 (boolean)
+
+    6. Comparator 와 Comparable
+        >> 인터페이스임, 따라서 부모 역할로만 씀
+        >> Comparator: 기본 정렬기준 외에 다른 기준으로 정렬하고자 할 때 사용
+        >> Comparable: 기본 정렬 기준을 구현하는데 사용
