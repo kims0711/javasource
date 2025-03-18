@@ -1,0 +1,15 @@
+- lombok.jar : 외부 라이브러리  (+ jdk:자바가 제공하는 기본 라이브러리)
+    > jar = 자바 클래스 압축 파일
+    > getter, setter, 생성자 자동 완성 가능
+
+- import 하기  
+    > @AllArgsConstructor
+    > @NoArgsConstructor
+    > @Getter
+    > @Setter
+    @치고 입력하면 아래 import 알아서 들어옴  
+        >> import lombok.NoArgsConstructor; // default 생성자 만들기
+        >> import lombok.AllArgsConstructor; // 멤버변수 전부 선택해서 생성자 만들기
+        >> import lombok.Setter; //setter
+        >> import lombok.Getter;  //getter
+        >> import lombok.ToString; //toString

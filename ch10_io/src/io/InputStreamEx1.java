@@ -30,7 +30,7 @@ public class InputStreamEx1 {
             // }
             // out.write(input);
 
-            byte[] b = new byte[1024];
+            byte[] b = new byte[1024]; // 바이트 단위로
             while (in.read(b) != -1) {
                 out.write(b);
             }
