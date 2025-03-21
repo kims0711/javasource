@@ -17,7 +17,9 @@ public class LambdaEx2 {
         // void accept(T t);
         // 숫자를 하나 전달인자로 받아 출력하기
 
-        Consumer<Integer> consumer = (i) -> System.out.println(i); // * 얘는 먼저 출력문 쓰고 comnumer.accept를 소비하는 개념이고
+        // Consumer<Integer> consumer = (i) -> System.out.println(i); // * 얘는 먼저 출력문 쓰고
+        // comnumer.accept를 소비하는 개념이고
+        Consumer<Integer> consumer = System.out::println; // 이렇게도 가능하다 (람다.txt 참고)
         consumer.accept(50);
 
         // 문자를 하나 전달인자로 받아 출력
