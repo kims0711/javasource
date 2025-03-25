@@ -9,7 +9,7 @@ public class arrayEx12 {
         // int : 0, boolean : false, double(float) : 0.0
         // String : null
 
-        String[] names = { "Kim", "Park", "Yi" };
+        String[] names = { "Kim", "Park", "Yi", "Yang" };
 
         // 기본값이 뭔지 확인해보기
         String[] name = new String[2];
@@ -20,6 +20,7 @@ public class arrayEx12 {
 
         boolean[] arr2 = new boolean[2];
         System.out.println(Arrays.toString(arr2)); // [false, false]
+
     }
 
 }
