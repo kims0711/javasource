@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpDAO {
     private Connection con;
@@ -124,6 +126,67 @@ public class EmpDAO {
         return result;
     }
 
-    public void select() {
+    public EmpDTO select(int empNo) {
+        con = getConnection();
+
+        String sql = "select * from emt_temp where empno=?";
+        EmpDTO eDto = null;
+        try {
+            psmt = con.prepareStatement(sql);
+            psmt.setInt(1, empNo);
+            rs = psmt.executeQuery();
+
+            // rs 객체에 담긴 결과물 옮기기
+            if (rs.next()) {
+                eDto = new EmpDTO();
+                eDto.setEmpNo(rs.getInt("empNo"));
+                eDto.setEName(rs.getString("eName"));
+                eDto.setJob(rs.getString("job"));
+                eDto.setMgr(rs.getInt("mgr"));
+                eDto.setHirDate(rs.getString("hireDate"));
+                eDto.setSal(rs.getInt("sal"));
+                eDto.setComm(rs.getInt("comm"));
+                eDto.setDeptNo(rs.getInt("deptNo"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(con, psmt, rs);
+        }
+        return eDto;
+    }
+
+    public List<EmpDTO> selectAll() {
+        con = getConnection();
+
+        String sql = "select * from emt_temp";
+        List<EmpDTO> list = new ArrayList<>();
+
+        try {
+            psmt = con.prepareStatement(sql);
+            rs = psmt.executeQuery();
+
+            // rs 객체에 담긴 결과물 옮기기
+            while (rs.next()) {
+                EmpDTO eDto = new EmpDTO();
+                eDto = new EmpDTO();
+                eDto.setEmpNo(rs.getInt("empNo"));
+                eDto.setEName(rs.getString("eName"));
+                eDto.setJob(rs.getString("job"));
+                eDto.setMgr(rs.getInt("mgr"));
+                eDto.setHirDate(rs.getString("hireDate"));
+                eDto.setSal(rs.getInt("sal"));
+                eDto.setComm(rs.getInt("comm"));
+                eDto.setDeptNo(rs.getInt("deptNo"));
+                list.add(eDto);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(con, psmt, rs);
+        }
+        return list;
+
     }
 }
