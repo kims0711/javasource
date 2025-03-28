@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDAO {
     private Connection con;
@@ -60,6 +62,98 @@ public class MemberDAO {
     // DML + SELECT
     // INSERT, DELETE, UPDATE : int 리턴
     // select : ~~DTO(where pk 지정) or List<~~DTO>
+    public List<MemberDTO> getNameList(String name) {
+        List<MemberDTO> list = new ArrayList<>();
+        try {
+            con = getConnection();
+            String sql = "select * from member where name like ?";
+            psmt = con.prepareStatement(sql);
+            psmt.setString(1, "%" + name + "%");
+            rs = psmt.executeQuery();
+            while (rs.next()) {
+                MemberDTO memberDTO = new MemberDTO();
+
+                memberDTO.setNo(rs.getInt("no"));
+                memberDTO.setId(rs.getString("id"));
+                memberDTO.setName(rs.getString("name"));
+                memberDTO.setAddr(rs.getString("addr"));
+                memberDTO.setEmail(rs.getString("email"));
+                memberDTO.setAge(rs.getInt("age"));
+                list.add(memberDTO);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(con, psmt, rs);
+        }
+        return list;
+    }
+
+    public List<MemberDTO> getlist() {
+        List<MemberDTO> list = new ArrayList<>();
+
+        try {
+            con = getConnection();
+            String sql = "select * from member";
+            psmt = con.prepareStatement(sql);
+
+            rs = psmt.executeQuery();
+            // rs에 있는 값을 dto로 옮겨야 함
+            while (rs.next()) {
+                MemberDTO memberDTO = new MemberDTO();
+
+                memberDTO.setNo(rs.getInt("no"));
+                memberDTO.setId(rs.getString("id"));
+                // 컬럼명을 써서 가져오는 것, index 넘버로도 가져올 수는 있음
+                // 컬럼명이기 때문에 따옴표 써주기
+                memberDTO.setName(rs.getString("name"));
+                memberDTO.setAddr(rs.getString("addr"));
+                memberDTO.setEmail(rs.getString("email"));
+                memberDTO.setAge(rs.getInt("age"));
+                list.add(memberDTO);
+            }
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(con, psmt, rs);
+        }
+        return list;
+    }
+
+    public MemberDTO getRow(String id) {
+        MemberDTO memberDTO = null;
+        try {
+            con = getConnection();
+            String sql = "select * from member where id = ? ";
+            psmt = con.prepareStatement(sql);
+            psmt.setString(1, id);
+
+            rs = psmt.executeQuery();
+            // rs에 있는 값을 dto로 옮겨야 함
+            if (rs.next()) {
+                memberDTO = new MemberDTO();
+
+                memberDTO.setNo(rs.getInt("no"));
+                memberDTO.setId(rs.getString("id"));
+                // 컬럼명을 써서 가져오는 것, index 넘버로도 가져올 수는 있음
+                // 컬럼명이기 때문에 따옴표 써주기
+                memberDTO.setName(rs.getString("name"));
+                memberDTO.setAddr(rs.getString("addr"));
+                memberDTO.setEmail(rs.getString("email"));
+                memberDTO.setAge(rs.getInt("age"));
+            }
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(con, psmt, rs);
+        }
+        return memberDTO;
+    }
 
     // insert, update : 전달인자 ~~DTO 설정
     public int update(MemberDTO memberDTO) {
@@ -99,13 +193,32 @@ public class MemberDAO {
         return result;
     }
 
+    // delete : 전달인자로 pk 사용함
+    public int delete(String id) {
+        int result = 0;
+
+        try {
+            con = getConnection();
+            String sql = "delete from member where id = ? ";
+            psmt = con.prepareStatement(sql);
+            // 물음표 해결
+            psmt.setString(1, id);
+            result = psmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(con, psmt);
+        }
+        return result;
+    }
+
     public int insert(MemberDTO mDto) {
         int result = 0;
 
         try {
             con = getConnection();
-            String sql = "insert into member(id,name,addr,email,age)";
-            sql += "values(?,?,?,?,?)";
+            String sql = "insert into member(no,id,name,addr,email,age)";
+            sql += "values(member_seq.nextval,?,?,?,?,?)"; // 시퀀스 no 사용
 
             psmt = con.prepareStatement(sql);
 
@@ -125,4 +238,6 @@ public class MemberDAO {
         }
         return result;
     }
+    // select * from member where name like "%홍%"
+
 }

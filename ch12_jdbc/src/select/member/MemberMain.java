@@ -1,6 +1,9 @@
 package select.member;
 
+import java.util.List;
 import java.util.Scanner;
+
+import select.emp.EmpDTO;
 
 public class MemberMain {
     public static void main(String[] args) {
@@ -17,6 +20,7 @@ public class MemberMain {
             System.out.println("3. 멤버 삭제");
             System.out.println("4. 멤버 조회");
             System.out.println("5. 멤버 전체 조회");
+            System.out.println("6. 멤버 전체 조회");
             System.out.println("6. 프로그램 종료");
             System.out.println("================================");
 
@@ -41,12 +45,34 @@ public class MemberMain {
 
                     break;
                 case 3:
-
+                    String id = util.memberDeleteInfo(sc);
+                    result = mDao.delete(id);
+                    util.printDeleteMessage(result);
                     break;
                 case 4:
+                    String input = util.memberGetInfo(sc);
+
+                    // regex(정규식)
+                    // input.matches("^[A-Za-z].*") : 정규식과 일치하면 true
+                    if (input.matches("^[A-Za-z].*")) {
+                        MemberDTO row = mDao.getRow(input);
+                        if (row != null) {
+                            util.memberPrint(row);
+                        }
+                    } else {
+                        List<MemberDTO> list = mDao.getNameList(input);
+                        if (!list.isEmpty()) {
+                            util.memberAllPrint(list);
+                        }
+                    }
+                    // 아이디는 영어로 시작 => getRow()
+                    // 이름은 한글로 시작 => getNameList()
 
                     break;
                 case 5:
+                    // mDAO.getlist() => 받은 결과 화면 출력
+                    List<MemberDTO> list = mDao.getlist();
+                    util.memberAllPrint(list);
 
                     break;
                 case 6:

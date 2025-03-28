@@ -1,8 +1,10 @@
 package select.member;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Consolutil {
+
     public MemberDTO memberInsertInfo(Scanner sc) {
         System.out.println();
         MemberDTO memberDTO = new MemberDTO();
@@ -29,6 +31,24 @@ public class Consolutil {
     public void printUpdateMessage(int result, String id) {
         // result값에 따라 입력 성공/ 입력 실패 출력
         System.out.println(result > 0 ? id + "님의 정보를 수정하였습니다" : id + "님의 정보 수정을 실패하였습니다");
+    }
+
+    public void printDeleteMessage(int result) {
+        System.out.println(result > 0 ? "삭제하였습니다" : "삭제를 실패하였습니다");
+    }
+
+    public void memberPrint(MemberDTO dto) {
+        System.out.println("-------------------------------------------");
+        // System.out.printf("%s %s %s %s %d\n", dto.getId(), dto.getName(),
+        // dto.getAddr(), dto.getEmail(),
+        // dto.getAge());
+        System.out.println("번호 : " + dto.getNo());
+        System.out.println("아이디 : " + dto.getId());
+        System.out.println("이름 : " + dto.getName());
+        System.out.println("주소 : " + dto.getAddr());
+        System.out.println("이메일 : " + dto.getEmail());
+        System.out.println("나이 : " + dto.getAge());
+
     }
 
     public MemberDTO meberUpdateMenu(Scanner sc) {
@@ -71,6 +91,50 @@ public class Consolutil {
         System.out.print("변경할 이메일 >> ");
         memberDTO.setEmail(sc.nextLine());
         return memberDTO;
+    }
+
+    // 삭제작업 메세지
+    public String memberDeleteInfo(Scanner sc) {
+        System.out.println("======= 회원 삭제 ========");
+        // 삭제할 회원 아이디 입력
+        System.out.print("삭제할 회원의 id를 입력하십시오 >> ");
+        String id = sc.nextLine();
+        // 입력받은 아이디 리턴
+        return id;
+    }
+
+    // 조회
+    public String memberGetInfo(Scanner sc) {
+        System.out.println("======= 회원 조회 =======");
+        System.out.println("1. 아이디 조회");
+        System.out.println("2. 이름 조회");
+        System.out.print("번호 입력 >> ");
+        int no = Integer.parseInt(sc.nextLine());
+        String input = "";
+        if (no == 1) {
+            System.out.print("조회할 회원의 id를 입력하십시오 >> ");
+            input = sc.nextLine();
+        } else if (no == 2) {
+            System.out.print("조화할 회원의 이름을 입력하십시오 >> ");
+            input = sc.nextLine();
+        }
+        // 입력받은 아이디 or 이름 리턴
+        return input;
+    }
+
+    public void memberAllPrint(List<MemberDTO> list) {
+        System.out.println("======= 전체 회원 조회 =======");
+        System.out.println("no\t아이디\t이름\t주소\t이메일\t\t나이");
+        System.out.println("----------------------------------------------------");
+        for (MemberDTO memberDTO : list) {
+            System.out.print(memberDTO.getNo() + "\t");
+            System.out.print(memberDTO.getId() + "\t");
+            System.out.print(memberDTO.getName() + "\t");
+            System.out.print(memberDTO.getAddr() + "\t");
+            System.out.print(memberDTO.getEmail() + "\t");
+            System.out.print(memberDTO.getAge() + "\t");
+            System.out.println();
+        }
     }
 
 }
